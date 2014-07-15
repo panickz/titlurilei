@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.phonegap.pgbsample"
+        versionCode = "10" 
+        version     = "1.0.0" >
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>Titlurile Zilei</name>
+
+	<description>
+	Aici sunt cele mai recente cazuri de cele mai mari ziare din Brazilia pentru gratuit. Nu plati pentru a fii informat. 
+	</description>
+	
+	<author href="https://www.salesengineonline.com" email="it@salesengineonline.com">
+	Sales Engine Online
+	</author>
+	
+	<gap:plugin name="com.phonegap.plugin.statusbar" />
+	
+	<gap:platform name="ios" />
+	<gap:platform name="android" />
+	<gap:platform name="winphone" />
+	
+	<preference name="phonegap-version" value="3.2.0" />
+	
+	<preference name="KeepRunning" value="false"/>
+	
+	
+	<icon src="mdpi.png" gap:platform="android" gap:qualifier="mdpi" />
+	<icon src="hdpi.png" gap:platform="android" gap:qualifier="hdpi" />
+	<icon src="xhdpi.png" gap:platform="android" gap:qualifier="xhdpi" />
+	<icon src="xxhdpi.png" gap:platform="android" gap:qualifier="xxhdpi" />
+	
+	<gap:splash src="splash/android/ldpi.png" gap:platform="android" gap:qualifier="port-ldpi" />
+	<gap:splash src="splash/android/mdpi.png" gap:platform="android" gap:qualifier="port-mdpi" />
+	<gap:splash src="splash/android/hdpi.png" gap:platform="android" gap:qualifier="port-hdpi" />
+	<gap:splash src="splash/android/xhdpi.png" gap:platform="android" gap:qualifier="port-xhdpi" />
+	<gap:splash src="splash/android/xxhdpi.png" gap:platform="android" gap:qualifier="port-xxhdpi" />
+	
+	<gap:splash src="splash/android/ldpi_landscape.png" gap:platform="android" gap:qualifier="land-ldpi" />
+	<gap:splash src="splash/android/mdpi_landscape.png" gap:platform="android" gap:qualifier="land-mdpi" />
+	<gap:splash src="splash/android/hdpi_landscape.png" gap:platform="android" gap:qualifier="land-hdpi" />
+	<gap:splash src="splash/android/xhdpi_landscape.png" gap:platform="android" gap:qualifier="land-xhdpi" />
+	
+	
+	<gap:plugin name="org.apache.cordova.camera" />
+	<gap:plugin name="org.apache.cordova.media-capture" />
+	<gap:plugin name="org.apache.cordova.device" />
+	<gap:plugin name="org.apache.cordova.device-orientation" />
+	<gap:plugin name="org.apache.cordova.console" />
+	<gap:plugin name="org.apache.cordova.contacts" />
+	<gap:plugin name="org.apache.cordova.device-motion" />
+	<gap:plugin name="org.apache.cordova.file" />
+	<gap:plugin name="org.apache.cordova.file-transfer" />
+	<gap:plugin name="org.apache.cordova.network-information" />
+	<gap:plugin name="org.apache.cordova.media" />
+	<gap:plugin name="org.apache.cordova.inappbrowser"  />
+	<gap:plugin name="org.apache.cordova.globalization" />
+	<gap:plugin name="org.apache.cordova.dialogs" />
+	<gap:plugin name="org.apache.cordova.splashscreen" />
+	<gap:plugin name="org.apache.cordova.vibration" />
+	
+	<config-file target="config.xml" parent="/*">
+      <access origin="https://m.facebook.com" />
+      <access origin="https://graph.facebook.com" />
+      <access origin="https://api.facebook.com" />
+      <access origin="https://*.fbcdn.net" />
+      <access origin="https://*.akamaihd.net" />
+    </config-file>
+    
+    <engines>
+      <engine name="cordova" version=">=3.0.0" />
+    </engines>
+	
+	
+	<gap:plugin name="com.phonegap.plugins.facebookconnect">
+		<param name="APP_ID" value="899133160113324" />
+		<param name="APP_NAME" value="d4b3abed1f4081376faa735c30b51ce9" />
+	</gap:plugin>
+	
+	<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:rim="http://www.blackberry.com/ns/widgets"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="org.apache.cordova.statusbar"
+    version="0.1.7-dev">
+    <name>StatusBar</name>
+    <description>Cordova StatusBar Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,statusbar</keywords>
+
+    <engines>
+            <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+    <js-module src="www/statusbar.js" name="statusbar">
+        <clobbers target="window.StatusBar" />
+    </js-module>
+
+    <platform name="android">
+        <source-file src="src/android/StatusBar.java" target-dir="src/org/apache/cordova/statusbar" />
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="StatusBar">
+                <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" onload="true" />
+            </feature>
+        </config-file>
+    </platform>
+    <!-- ios -->
+    <platform name="ios">
+
+        <config-file target="config.xml" parent="/*">
+            <feature name="StatusBar">
+                <param name="ios-package" value="CDVStatusBar" onload="true" />
+            </feature>
+            <preference name="StatusBarOverlaysWebView" value="true" />
+            <preference name="StatusBarBackgroundColor" value="#000000" />
+            <preference name="StatusBarStyle" value="lightcontent" />
+        </config-file>
+
+        <header-file src="src/ios/CDVStatusBar.h" />
+        <source-file src="src/ios/CDVStatusBar.m" />
+
+    </platform>
+	
+	
+	<!-- Do not auto hide splash on iOS -->
+	<preference name="AutoHideSplashScreen" value="false" />
+	<!-- Do not auto hide splash on Android -->
+	<preference name="SplashScreenDelay" value="10000"/>
+
+    <!-- wp7 -->
+    <platform name="wp7">
+        <config-file target="config.xml" parent="/*">
+            <feature name="StatusBar">
+                <param name="wp-package" value="StatusBar"/>
+            </feature>
+        </config-file>
+        <source-file src="src/wp/StatusBar.cs" />
+    </platform>
+
+    <!-- wp8 -->
+    <platform name="wp8">
+        <config-file target="config.xml" parent="/*">
+            <feature name="StatusBar">
+                <param name="wp-package" value="StatusBar"/>
+            </feature>
+        </config-file>
+        <source-file src="src/wp/StatusBar.cs" />
+    </platform>
+	</plugin>
+	<access origin="*" />
+	
+</widget>

@@ -1,0 +1,81 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'codropsicons';
+	src:url('../fonts/codropsicons/codropsicons.eot');
+	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+}
+
+body {
+	background: #fff;
+	color: #333;
+	font-weight: 300;
+	font-family: 'Lato', Calibri, Arial, sans-serif;
+	height:auto;
+}
+html{height:100%;}
+
+
+
+a {
+	text-decoration: none;
+	color: #48a770;
+	outline: none;
+}
+
+a:hover, a:focus {
+	color: #2c774b;
+	outline: none;
+}
+
+.clearfix:before,
+.clearfix:after {
+	display: table;
+	content: " ";
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+button.menu-icon {
+	padding: 5px 7px 9px 5px;
+	border-radius: 5px;
+	background: #333;
+	cursor: pointer;
+	display: inline-block;
+	margin:5px;
+	float: left;
+	border:none;
+}
+.menu-icon .bar {
+	background: white;
+	border-radius: 5px;
+	width: 30px;
+	height: 4px;
+	margin: 4px 0 0 0;
+}
+
+.topbar{background:#f1f1f1;height:50px;width:100%;border-bottom:1px solid #e1e1e1;}
+.topbar2{background:#e3e3e3;height:30px;width:100%;-moz-box-shadow: 2px 2px 2px #333;	-webkit-box-shadow: 2px 2px 2px #333;box-shadow: 2px 2px 2px #333;-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=2, Color='#333333')";filter: progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=2, Color='#333333');}
+h1{color:#666; font-family:Georgia, "Times New Roman", Times, serif;margin:0;padding:0;font-size:1em;float:left;margin-top:15px;margin-left:2%; font-style:italic;text-align:center;}
+h1 span{color:#01b6ef;}
+.favourites img{width:40px;float:right;margin:5px 5px 0 0;}
+.main{background:#666;margin:0;padding:10px;}
+.magazine ul{ list-style:none;padding:0;margin:0;}
+.magazine ul li{width:100%;margin:10px 0;float:left;}
+.magazine ul li .cover{float:left;width:60%;height:100%;margin-bottom:15px;}
+.magazine ul li .options{width:40%;height:100%;float:left;text-align:center;}
+.magazine > ul > li:after{border-top:1px solid #555;border-bottom:1px solid #777;content: ""; display:block;margin:10px 0 0 0;width:100%;clear:both;}
+.magazine ul li .cover img{width:100%;-moz-box-shadow: 0px 0px 4px #333;	-webkit-box-shadow: 0px 0px 4px #333;box-shadow: 0px 0px  4px #333;-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=0, Color='#333333')";filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=0, Color='#333333');}
+.magazine ul li .options ul{margin-left:10px;}
+.magazine ul li .options ul li img{width:50%;}
+.magazine ul li .options ul li a{color:#999;}
+h2{color:#fff;font-size:1em;}
+.date{padding-top:7px;text-align:right;margin-right:10px;font-size:13px;}
+.date span{font-weight:bold;}
+.metereologia{float:left;margin-top:7px;font-size:13px;font-weight:400;margin-left:10px;color:#999;}

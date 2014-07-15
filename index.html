@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Titlurei Zilei</title>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mmenu.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mmenu.dragopen.js"></script>
+    <script type="text/javascript" src="js/modernizr.custom.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script src="js/jquery.swipebox.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/jquery.mmenu.css" />
+    <link type="text/css" rel="stylesheet" href="css/demo.css" />
+    <link rel="stylesheet" href="css/swipebox.css">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+	<script>
+	
+	document.addEventListener("deviceready", onDeviceReady, false);
+
+	function onDeviceReady() {
+		alert('Device Ready');
+	}
+	
+    $(function() {
+		$.ajax({
+			async: false,
+			type: "GET",
+			url: "http://www.titlurile-zilei.ro/getWeatherJSON",
+			dataType:"JSON",
+			success: function (archive) {
+				console.log(archive.weather[0].icon);
+				$('.temperature').append('<div class="temp">'+archive.main.temp+'</div><img src="http://openweathermap.org/img/w/'+archive.weather[0].icon+'.png">');
+				
+			}
+		});	
+		
+		$.ajax({
+			async: false,
+			type: "GET",
+			url: "http://www.titlurile-zilei.ro/appDate",
+			dataType:"HTML",
+			success: function (data) {
+				$('.data').append(data);
+			}
+		});	
+		
+		$('#menu').mmenu({
+			onClick		: {
+				blockUI			: false,
+				close: true
+			}
+		}, {
+			offCanvas	: {
+				pageSelector	: 'div[data-role="page"]:first'
+			}
+		});
+		
+		if(typeof(window.localStorage.getItem("isReg")) != "undefined" && window.localStorage.getItem("isReg") !== null) {
+			$('.favorites').append("<img src='img/favIcon.jpg' onClick='' class='iconFb' />");
+		}else{
+			$('.favorites').append("<img src='img/fbIcon.jpg' onClick='login()' class='iconFb' />");
+			}
+	
+		$.ajax({
+			async: false,
+			type: "GET",
+			url: "http://www.titlurile-zilei.ro/appCategory",
+			dataType:"JSON",
+			success: function (data) {
+				var i = 1;
+				for(var x in data){
+					$('#menu ul').append('<li><a href="index.html#page'+data[x].id+'" onclick="$(\'#menu\').trigger(\'close.mm\');">'+data[x].category+'</a></li>');
+					$.ajax({
+						async: false,
+						type: "GET",
+						url: "http://www.titlurile-zilei.ro/appArchive?cat="+data[x].id,
+						dataType:"JSON",
+						success: function (archive) {
+							
+							for(var a in archive){
+								
+								$('#cat'+data[x].id).append('<li> \
+									<div class="cover"><a href="http://www.titlurile-zilei.com/assets/upload/mobile/'+archive[a].cover+'" rel="gal'+i+'" class="swipebox" ><img src="http://www.titlurile-zilei.com/assets/upload/mobile/'+archive[a].cover+'" alt=""></a>'+archive[a].name+'</div> \
+								  </li>');
+								 
+								  
+							}
+							i = i + 1;
+							
+						}
+					});	
+					 
+				}
+				
+				
+			}
+		});	
+        
+			
+	});
+
+ 
+  $(document).ready(function() {
+       $("#menu").mmenu({
+            dragOpen: {
+               open: true
+            }
+         });
+	  
+   });
+	
+	
+  </script>
+  </head>
+  <body>
+ 		<div data-role="page" id='page3' class='ui-page ui-body-c mm-page'>
+			<div class="header">
+				<a href="#menu" data-ajax="false"></a>
+				<img src='images/logo.png' class='logo' />
+                <img src='img/fbIcon.jpg' onClick='login()' class='iconFb' />
+               	<div style='display:inline-block'class='favorites'></div>
+			</div>
+            <div class='infoHolder'>
+            	<div class='temperature'></div>
+                <div class='data'></div>
+            </div>
+			<div id="content" data-role="content">
+              <div class="magazine">
+                <ul id='cat3'>
+                 
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+		</div>
+        
+        <div data-role="page" id='page7' tabindex='0' class='ui-page ui-body-c mm-page'>
+			<div class="header">
+				<a href="#menu" data-ajax="false"></a>
+				<img src='images/logo.png' class='logo' />
+			</div>
+            <div class='infoHolder'>
+            	<div class='temperature'></div>
+                <div class='data'></div>
+            </div>
+			<div id="content" data-role="content">
+              <div class="magazine">
+                <ul id='cat7'>
+                 
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+		</div>
+        <div data-role="page" id='page11' tabindex='0' class='ui-page ui-body-c mm-page'>
+			<div class="header">
+				<a href="#menu" data-ajax="false"></a>
+				<img src='images/logo.png' class='logo' />
+			</div>
+            <div class='infoHolder'>
+            	<div class='temperature'></div>
+                <div class='data'></div>
+            </div>
+			<div id="content" data-role="content">
+              <div class="magazine">
+                <ul id='cat11'>
+                 
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+		</div>
+        <div data-role="page" id='page17' tabindex='0' class='ui-page ui-body-c mm-page'>
+			<div class="header">
+				<a href="#menu" data-ajax="false"></a>
+				<img src='images/logo.png' class='logo' />
+			</div>
+            <div class='infoHolder'>
+            	<div class='temperature'></div>
+                <div class='data'></div>
+            </div>
+			<div id="content" data-role="content">
+              <div class="magazine">
+                <ul id='cat17'>
+                 
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+		</div>
+        
+        <div data-role="page" id='page21' tabindex='0' class='ui-page ui-body-c mm-page'>
+			<div class="header">
+				<a href="#menu" data-ajax="false"></a>
+				<img src='images/logo.png' class='logo' />
+			</div>
+            <div class='infoHolder'>
+            	<div class='temperature'></div>
+                <div class='data'></div>
+            </div>
+			<div id="content" data-role="content">
+              <div class="magazine">
+                <ul id='cat21'>
+                 
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+		</div>
+        
+        <div data-role="page" id='page23' tabindex='0' class='ui-page ui-body-c mm-page'>
+			<div class="header">
+				<a href="#menu" data-ajax="false"></a>
+				<img src='images/logo.png' class='logo' />
+			</div>
+            <div class='infoHolder'>
+            	<div class='temperature'></div>
+                <div class='data'></div>
+            </div>
+			<div id="content" data-role="content">
+              <div class="magazine">
+                <ul id='cat23'>
+                 
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+		</div>
+		
+        <div data-role="page" id='page25' tabindex='0' class='ui-page ui-body-c mm-page'>
+			<div class="header">
+				<a href="#menu" data-ajax="false"></a>
+				<img src='images/logo.png' class='logo' />
+			</div>
+            <div class='infoHolder'>
+            	<div class='temperature'></div>
+                <div class='data'></div>
+            </div>
+			<div id="content" data-role="content">
+              <div class="magazine">
+                <ul id='cat25'>
+                 
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+		</div>
+        
+        <div data-role="page" id='page27' tabindex='0' class='ui-page ui-body-c mm-page'>
+			<div class="header">
+				<a href="#menu" data-ajax="false"></a>
+				<img src='images/logo.png' class='logo' />
+			</div>
+            <div class='infoHolder'>
+            	<div class='temperature'></div>
+                <div class='data'></div>
+            </div>
+			<div id="content" data-role="content">
+              <div class="magazine">
+                <ul id='cat27'>
+                 
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+		</div>
+        
+        <div data-role="page" id='page29' tabindex='0' class='ui-page ui-body-c mm-page'>
+			<div class="header">
+				<a href="#menu" data-ajax="false"></a>
+				<img src='images/logo.png' class='logo' />
+			</div>
+            <div class='infoHolder'>
+            	<div class='temperature'></div>
+                <div class='data'></div>
+            </div>
+			<div id="content" data-role="content">
+              <div class="magazine">
+                <ul id='cat29'>
+                 
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+		</div>
+        
+        <div data-role="page" id='page31' tabindex='0' class='ui-page ui-body-c mm-page'>
+			<div class="header">
+				<a href="#menu" data-ajax="false"></a>
+				<img src='images/logo.png' class='logo' />
+			</div>
+            <div class='infoHolder'>
+            	<div class='temperature'></div>
+                <div class='data'></div>
+            </div>
+			<div id="content" data-role="content">
+              <div class="magazine">
+                <ul id='cat31'>
+                 
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+		</div>
+		
+       <div data-role="page" id='page33' tabindex='0' class='ui-page ui-body-c mm-page'>
+			<div class="header">
+				<a href="#menu" data-ajax="false"></a>
+				<img src='images/logo.png' class='logo' />
+			</div>
+            <div class='infoHolder'>
+            	<div class='temperature'></div>
+                <div class='data'></div>
+            </div>
+			<div id="content" data-role="content">
+              <div class="magazine">
+                <ul id='cat33'>
+                 
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+		</div>
+        
+        <div data-role="page" id='page35' tabindex='0' class='ui-page ui-body-c mm-page'>
+			<div class="header">
+				<a href="#menu" data-ajax="false"></a>
+				<img src='images/logo.png' class='logo' />
+			</div>
+            <div class='infoHolder'>
+            	<div class='temperature'></div>
+                <div class='data'></div>
+            </div>
+			<div id="content" data-role="content">
+              <div class="magazine">
+                <ul id='cat35'>
+                 
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+		</div>
+		
+        <div data-role="page" id='page37' tabindex='0' class='ui-page ui-body-c mm-page'>
+			<div class="header">
+				<a href="#menu" data-ajax="false"></a>
+				<img src='images/logo.png' class='logo' />
+			</div>
+            <div class='infoHolder'>
+            	<div class='temperature'></div>
+                <div class='data'></div>
+            </div>
+			<div id="content" data-role="content">
+              <div class="magazine">
+                <ul id='cat37'>
+                 
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+		</div>
+        
+        <div data-role="page" id='page43' tabindex='0' class='ui-page ui-body-c mm-page'>
+			<div class="header">
+				<a href="#menu" data-ajax="false"></a>
+				<img src='images/logo.png' class='logo' />
+			</div>
+            <div class='infoHolder'>
+            	<div class='temperature'></div>
+                <div class='data'></div>
+            </div>
+            
+			<div id="content" data-role="content">
+              <div class="magazine">
+                <ul id='cat43'>
+                 
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+		</div>
+        
+		<nav id="menu">
+			<ul>
+			
+			</ul>
+		</nav>
+      <script src="js/classie.js"></script>
+  </body>
+</html>
+<script src="openFB.js"></script>
+<script>
+
+    openFB.init('899133160113324'); // Defaults to sessionStorage for storing the Facebook token
+
+//  Uncomment the line below to store the Facebook token in localStorage instead of sessionStorage
+//  openFB.init('YOUR_FB_APP_ID', 'http://localhost/openfb/oauthcallback.html', window.localStorage);
+
+    function login() {
+   		 openFB.login('email',
+                function() {
+                   getInfo();	
+                },
+                function(error) {
+                    alert('Facebook login failed: ' + error.error_description);
+                });
+    }
+	
+	function retreive(){
+		var value = window.localStorage.getItem("isReg");
+		alert(value);
+		}
+
+    function getInfo() {
+        openFB.api({
+            path: '/me',
+            success: function(data) {
+				$.ajax({
+					async: false,
+					type: "GET",
+					url: "http://www.titlurile-zilei.ro/appUser",
+					dataType:"HTML",
+					data: data,
+					success: function (response) {
+						window.localStorage.setItem("isReg", response);
+						value = window.localStorage.getItem("isReg");
+					}
+				});	
+            },
+            error: errorHandler
+			});
+    }
+
+    function share() {
+        openFB.api({
+            method: 'POST',
+            path: '/me/feed',
+            params: {
+                message: 'Testing Facebook APIs'
+            },
+            success: function() {
+                alert('the item was posted on Facebook');
+            },
+            error: errorHandler});
+    }
+
+    function revoke() {
+        openFB.revokePermissions(
+                function() {
+                    alert('Permissions revoked');
+					window.localStorage.removeItem("isReg");
+                },
+                errorHandler);
+    }
+
+    function errorHandler(error) {
+        alert(error.message);
+    }
+</script>
+<script type="text/javascript">
+$( document ).ready(function() {
+	$( '.swipebox' ).swipebox( {
+		useCSS : true, // false will force the use of jQuery for animations
+		useSVG : true, // false to force the use of png for buttons
+		hideBarsOnMobile : false, // false will show the caption and navbar on mobile devices
+		hideBarsDelay : 3000
+	});
+});
+ </script>				 

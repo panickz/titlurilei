@@ -1,0 +1,160 @@
+html, body
+{
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background-color: white;
+	font-family: Arial, Helvetica, Verdana;
+	font-size: 14px;
+	line-height: 22px;
+	color: #333;
+	position: relative;
+	-webkit-text-size-adjust: none;
+}
+body *
+{
+	text-shadow: none;
+}
+.iconFb{ height:33px; display:inline-block;}
+.main{background:#666;margin:0;padding:10px;}
+.magazine ul{ list-style:none;padding:0;margin:0;}
+.magazine ul li{width:50%;margin:10px 0;display:inline-block; vertical-align:top;}
+.magazine ul li .cover{float:left;width:95%;height:100%;margin-bottom:15px; font-size: 13px;
+font-family: sans-serif;}
+.magazine > ul > li:after{content: ""; display:block;margin:10px 0 0 0;width:100%;clear:both;}
+.magazine ul li .cover img{width:100%;-moz-box-shadow: 0px 0px 4px #333;	-webkit-box-shadow: 0px 0px 4px #333;box-shadow: 0px 0px  4px #333;-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=0, Color='#333333')";filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=0, Color='#333333');}
+.magazine ul li .options ul{margin-left:10px;}
+.magazine ul li .options ul li img{width:50%;}
+
+#ios7statusbar
+{
+    width:100%;
+    height:20px;
+    background-color:white;
+    position:fixed;
+    z-index:100;
+}
+ 
+.ios7 .ui-page
+{
+    margin-top: 20px;
+}
+h1, h2, h3, h4, h5, h6
+{
+	line-height: 1;
+	color: #330;
+	font-weight: bold;
+	margin: 20px 0 10px 0;
+}
+h1, h2, h3
+{
+	font-size: 18px;
+}
+h4, h5, h6
+{
+	font-size: 16px;
+}
+p
+{
+	margin: 0 0 10px 0;
+}
+a, a:link, a:active, a:visited, a:hover
+{
+	color: #333;
+	text-decoration: underline;
+}
+pre
+{
+	font-size: 12px;
+	width: 100%;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+}
+.ui-content{
+	background:white !important;
+	}
+#page nav
+{
+	display: none;
+}
+nav ul a { text-decoration: none !important; text-transform:uppercase; }
+
+.logo{ width:210px; margin-top:5px;}
+.infoHolder{ height:40px; background:#ececec; }
+
+.temperature div,img{ display:inline-block; }
+div.data{ display:inline-block; vertical-align:top; margin-top: 12px;
+font-family: sans-serif;
+font-size: 14px; float:right; padding-right:15px;}
+
+.temperature div.temp{ vertical-align:top; margin-top: 12px;
+font-family: sans-serif;
+font-size: 14px;}
+
+.temperature{ padding-left:15px; display:inline-block;}
+
+.temperature img{ display: inline-block;
+width: 42px; }
+
+#header,
+.header,
+#footer
+{
+	-webkit-box-shadow:  0px 4px 13px 0px rgba(50, 50, 50, 0.56);
+	-moz-box-shadow:     0px 4px 13px 0px rgba(50, 50, 50, 0.56);
+	box-shadow:          0px 4px 13px 0px rgba(50, 50, 50, 0.56);
+	background: white;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	z-index:999;
+	width:100%;
+	text-align: center;
+	line-height: 40px;
+	height: 55px;
+	padding:0 50px;
+	padding-top:10px;
+}
+#header a,
+.header a
+{
+	background: center center no-repeat;
+	background-image: url( ../images/png.png );
+	margin-top: 12px;
+	display: block;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 0;
+	left: 10px;
+}
+#header a.friends,
+.header a.friends
+{
+	background-image: url(../images/png.png);
+}
+#header a.right,
+.header a.right
+{
+	left: auto;
+	right: 10px;
+}
+#content,
+.content
+{
+	padding: 20px;
+}
+#content
+{
+	padding-bottom: 70px;
+}
+.adsbygoogle
+{
+	background: #eee;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+}
