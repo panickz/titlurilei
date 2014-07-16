@@ -37,6 +37,7 @@
 	<gap:splash src="splash/android/mdpi.png" gap:platform="android" gap:qualifier="port-mdpi" />
 	<gap:splash src="splash/android/hdpi.png" gap:platform="android" gap:qualifier="port-hdpi" />
 	<gap:splash src="splash/android/xhdpi.png" gap:platform="android" gap:qualifier="port-xhdpi" />
+	<gap:splash src="splash/android/xxhdpi.png" gap:platform="android" gap:qualifier="port-xxhdpi" /> 
 	
 	<gap:splash src="splash/android/ldpi_landscape.png" gap:platform="android" gap:qualifier="land-ldpi" />
 	<gap:splash src="splash/android/mdpi_landscape.png" gap:platform="android" gap:qualifier="land-mdpi" />
