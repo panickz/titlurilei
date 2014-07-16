@@ -6,10 +6,10 @@
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script type="text/javascript" src="js/jquery.mmenu.min.js"></script>
     <script type="text/javascript" src="js/jquery.sidr.min.js"></script>
-    <script type="text/javascript" src="js/modernizr.custom.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script src="js/jquery.swipebox.js"></script>
     <script src="js/wipe.js"></script>
+    <script src="js/transit.js"></script>
     <link type="text/css" rel="stylesheet" href="css/jquery.sidr.dark.css" />
     <link type="text/css" rel="stylesheet" href="css/demo.css" />
     <link rel="stylesheet" href="css/swipebox.css">
@@ -112,6 +112,7 @@
 	});
 	
 	function favorites(id,cover){
+	alert('IN MDfcker!');
 		if (localStorage.getItem("favJSON") === null) {
 			
 			//FETCH DATA
@@ -168,10 +169,6 @@
  
 
 	 $(window).touchwipe({
-        wipeLeft: function() {
-          // Close
-          $.sidr('close', 'menu');
-        },
         wipeRight: function() {
           // Open
           $.sidr('open', 'menu');
@@ -458,7 +455,7 @@
 			
 		</nav>
       
-      <script src="js/classie.js"></script>
+
   </body>
 </html>
 <script type="text/javascript">
