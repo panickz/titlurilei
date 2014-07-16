@@ -169,6 +169,10 @@
  
 
 	 $(window).touchwipe({
+        wipeLeft: function() {
+          // Open
+          $.sidr('open', 'close');
+        },
         wipeRight: function() {
           // Open
           $.sidr('open', 'menu');
