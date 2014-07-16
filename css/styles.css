@@ -9,7 +9,15 @@
 		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
 		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
 }
-
+.favoritos
+{
+	position:absolute;
+	width:40%;
+	top:0;
+	height:100%;
+	background: #666;
+	right:0;
+}
 body {
 	background: #fff;
 	color: #333;
@@ -18,9 +26,6 @@ body {
 	height:auto;
 }
 html{height:100%;}
-
-
-
 a {
 	text-decoration: none;
 	color: #48a770;

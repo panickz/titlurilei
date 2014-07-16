@@ -45,6 +45,9 @@
 		});	
 		
 		$('#menu').mmenu({
+			dragOpen: {
+              open: true
+            },
 			onClick		: {
 				blockUI			: false,
 				close: true
@@ -58,8 +61,21 @@
 		if(typeof(window.localStorage.getItem("isReg")) != "undefined" && window.localStorage.getItem("isReg") !== null) {
 			$('.favorites').append("<img src='img/favIcon.jpg' onClick='' class='iconFb' />");
 		}else{
-			$('.favorites').append("<img src='img/fbIcon.jpg' onClick='login()' class='iconFb' />");
+			//$('.favorites').append("<img src='img/fbIcon.jpg' onClick='login()' class='iconFb' />");
+			//$('.favorites').append("");
 			}
+		
+		$('#favii').mmenu({
+			dragOpen: {
+                open	: true
+            },
+			onClick		: {
+				blockUI	: false,
+				close	: true
+			}
+		});
+		
+		
 	
 		$.ajax({
 			async: false,
@@ -100,14 +116,7 @@
 	});
 
  
-  $(document).ready(function() {
-       $("#menu").mmenu({
-            dragOpen: {
-               open: true
-            }
-         });
-	  
-   });
+
 	
 	
   </script>
@@ -116,9 +125,8 @@
  		<div data-role="page" id='page3' class='ui-page ui-body-c mm-page'>
 			<div class="header">
 				<a href="#menu" data-ajax="false"></a>
-				<img src='images/logo.png' class='logo' />
-                <img src='img/fbIcon.jpg' onClick='login()' class='iconFb' />
-               	<div style='display:inline-block'class='favorites'></div>
+				<img src='images/logo.png' class='logo' /><div style='display:inline-block'class='favorites'></div>
+                <a href='#favorites' id='favii' data-ajax="false" class="ui-link right"><img src='img/favIcon.jpg' class='iconFb' /></a>
 			</div>
             <div class='infoHolder'>
             	<div class='temperature'></div>
@@ -137,7 +145,7 @@
         <div data-role="page" id='page7' tabindex='0' class='ui-page ui-body-c mm-page'>
 			<div class="header">
 				<a href="#menu" data-ajax="false"></a>
-				<img src='images/logo.png' class='logo' />
+				<img src='images/logo.png' class='logo' /><div style='display:inline-block'class='favorites'></div>
 			</div>
             <div class='infoHolder'>
             	<div class='temperature'></div>
@@ -155,7 +163,7 @@
         <div data-role="page" id='page11' tabindex='0' class='ui-page ui-body-c mm-page'>
 			<div class="header">
 				<a href="#menu" data-ajax="false"></a>
-				<img src='images/logo.png' class='logo' />
+				<img src='images/logo.png' class='logo' /><div style='display:inline-block'class='favorites'></div>
 			</div>
             <div class='infoHolder'>
             	<div class='temperature'></div>
@@ -164,7 +172,7 @@
 			<div id="content" data-role="content">
               <div class="magazine">
                 <ul id='cat11'>
-                 
+                	 
                 </ul>
                 <div class="clearfix"></div>
               </div>
@@ -173,7 +181,7 @@
         <div data-role="page" id='page17' tabindex='0' class='ui-page ui-body-c mm-page'>
 			<div class="header">
 				<a href="#menu" data-ajax="false"></a>
-				<img src='images/logo.png' class='logo' />
+				<img src='images/logo.png' class='logo' /><div style='display:inline-block'class='favorites'></div>
 			</div>
             <div class='infoHolder'>
             	<div class='temperature'></div>
@@ -182,7 +190,7 @@
 			<div id="content" data-role="content">
               <div class="magazine">
                 <ul id='cat17'>
-                 
+                	
                 </ul>
                 <div class="clearfix"></div>
               </div>
@@ -192,7 +200,7 @@
         <div data-role="page" id='page21' tabindex='0' class='ui-page ui-body-c mm-page'>
 			<div class="header">
 				<a href="#menu" data-ajax="false"></a>
-				<img src='images/logo.png' class='logo' />
+				<img src='images/logo.png' class='logo' /><div style='display:inline-block'class='favorites'></div>
 			</div>
             <div class='infoHolder'>
             	<div class='temperature'></div>
@@ -211,7 +219,7 @@
         <div data-role="page" id='page23' tabindex='0' class='ui-page ui-body-c mm-page'>
 			<div class="header">
 				<a href="#menu" data-ajax="false"></a>
-				<img src='images/logo.png' class='logo' />
+				<img src='images/logo.png' class='logo' /><div style='display:inline-block'class='favorites'></div>
 			</div>
             <div class='infoHolder'>
             	<div class='temperature'></div>
@@ -230,7 +238,7 @@
         <div data-role="page" id='page25' tabindex='0' class='ui-page ui-body-c mm-page'>
 			<div class="header">
 				<a href="#menu" data-ajax="false"></a>
-				<img src='images/logo.png' class='logo' />
+				<img src='images/logo.png' class='logo' /><div style='display:inline-block'class='favorites'></div>
 			</div>
             <div class='infoHolder'>
             	<div class='temperature'></div>
@@ -249,7 +257,7 @@
         <div data-role="page" id='page27' tabindex='0' class='ui-page ui-body-c mm-page'>
 			<div class="header">
 				<a href="#menu" data-ajax="false"></a>
-				<img src='images/logo.png' class='logo' />
+				<img src='images/logo.png' class='logo' /><div style='display:inline-block'class='favorites'></div>
 			</div>
             <div class='infoHolder'>
             	<div class='temperature'></div>
@@ -268,7 +276,7 @@
         <div data-role="page" id='page29' tabindex='0' class='ui-page ui-body-c mm-page'>
 			<div class="header">
 				<a href="#menu" data-ajax="false"></a>
-				<img src='images/logo.png' class='logo' />
+				<img src='images/logo.png' class='logo' /><div style='display:inline-block'class='favorites'></div>
 			</div>
             <div class='infoHolder'>
             	<div class='temperature'></div>
@@ -287,7 +295,7 @@
         <div data-role="page" id='page31' tabindex='0' class='ui-page ui-body-c mm-page'>
 			<div class="header">
 				<a href="#menu" data-ajax="false"></a>
-				<img src='images/logo.png' class='logo' />
+				<img src='images/logo.png' class='logo' /><div style='display:inline-block'class='favorites'></div>
 			</div>
             <div class='infoHolder'>
             	<div class='temperature'></div>
@@ -306,7 +314,7 @@
        <div data-role="page" id='page33' tabindex='0' class='ui-page ui-body-c mm-page'>
 			<div class="header">
 				<a href="#menu" data-ajax="false"></a>
-				<img src='images/logo.png' class='logo' />
+				<img src='images/logo.png' class='logo' /><div style='display:inline-block'class='favorites'></div>
 			</div>
             <div class='infoHolder'>
             	<div class='temperature'></div>
@@ -325,7 +333,7 @@
         <div data-role="page" id='page35' tabindex='0' class='ui-page ui-body-c mm-page'>
 			<div class="header">
 				<a href="#menu" data-ajax="false"></a>
-				<img src='images/logo.png' class='logo' />
+				<img src='images/logo.png' class='logo' /><div style='display:inline-block'class='favorites'></div>
 			</div>
             <div class='infoHolder'>
             	<div class='temperature'></div>
@@ -344,7 +352,7 @@
         <div data-role="page" id='page37' tabindex='0' class='ui-page ui-body-c mm-page'>
 			<div class="header">
 				<a href="#menu" data-ajax="false"></a>
-				<img src='images/logo.png' class='logo' />
+				<img src='images/logo.png' class='logo' /><div style='display:inline-block'class='favorites'></div>
 			</div>
             <div class='infoHolder'>
             	<div class='temperature'></div>
@@ -363,7 +371,7 @@
         <div data-role="page" id='page43' tabindex='0' class='ui-page ui-body-c mm-page'>
 			<div class="header">
 				<a href="#menu" data-ajax="false"></a>
-				<img src='images/logo.png' class='logo' />
+				<img src='images/logo.png' class='logo' /><div style='display:inline-block'class='favorites'></div>
 			</div>
             <div class='infoHolder'>
             	<div class='temperature'></div>
@@ -385,6 +393,11 @@
 			
 			</ul>
 		</nav>
+        
+        <nav id="favorites">
+			
+		</nav>
+      
       <script src="js/classie.js"></script>
   </body>
 </html>

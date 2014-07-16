@@ -16,6 +16,22 @@ body {
 body *
 {
 	text-shadow: none;
+
+}
+.favoritos
+{
+	position:fixed;
+	width:0%;
+	z-index:200;
+	top:0;
+	height:100%;
+	-webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+	background: #666;
+	right:0;
 }
 .iconFb{ height:33px; display:inline-block;}
 .main{background:#666;margin:0;padding:10px;}
