@@ -83,7 +83,7 @@
 							for(var a in archive){
 								
 								$('#cat'+data[x].id).append('<li> \
-									<div class="cover"><a href="http://www.titlurile-zilei.com/assets/upload/mobile/'+archive[a].cover+'" rel="gal'+i+'" class="swipebox" data-id="'+archive[a].hook+'" data-cover="'+archive[a].cover+'"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/'+archive[a].cover+'" alt=""></a>'+archive[a].name+'</div> \
+									<div class="cover"><a href="http://www.titlurile-zilei.com/assets/upload/mobile/'+archive[a].cover+'" rel="gal'+i+'" class="swipebox" data-id="'+archive[a].hook+'" data-cover="'+archive[a].cover+'"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/'+archive[a].cover+'" alt=""></a>'+archive[a].name+'<a class="favIt" data-id="'+archive[a].hook+'" data-cover="'+archive[a].cover+'">FAV</a></div> \
 								  </li>');
 								 
 								  
@@ -104,7 +104,7 @@
         	for(var a in favArray){
 								
 				$('#sidr-right').append('<div style="width:100%; text-align:center;"> \
-					<a href="http://www.titlurile-zilei.com/assets/upload/mobile/'+favArray[a].cover+'" rel="gfavs" class="swipebox" data-id="'+favArray[a].hook+'" data-cover="'+favArray[a].cover+'" onclick="$.sidr(\'close\', \'sidr-right\');"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/'+favArray[a].cover+'" alt="" style="width: 70%;margin: 23px;"></a> \
+					<a href="http://www.titlurile-zilei.com/assets/upload/mobile/'+favArray[a].cover+'" rel="gfavs" class="swipebox" onclick="$.sidr(\'close\', \'sidr-right\');"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/'+favArray[a].cover+'" alt="" style="width: 70%;margin: 23px;"></a> \
 				  </div>');
 				 
 			}
@@ -118,63 +118,65 @@
 				$('#swipebox-slider a').attr('onclick','favorites('+id+',"'+cover+'")');
 			},800)
 		});
+		
+			$( '.favIt' ).click(function() {
 			
+			var id = $(this).attr('data-id');
+			var cover = $(this).attr('data-cover');
+			
+			if (localStorage.getItem("favJSON") === null) {
+				
+				//FETCH DATA
+				var Data = [
+							{
+							    id: id,
+							    cover: cover 
+							}
+							];
+						
+			 	window.localStorage.setItem("favJSON", JSON.stringify(Data));
+			 	
+			 	var value = window.localStorage.getItem("favJSON");
+			 	console.log(value);
+			 	
+			}else{
+				//FETCH DATA
+				var Data = [
+							{
+							    id: id,
+							    cover: cover 
+							},
+							{
+							    id: id,
+							    cover: cover 
+							}
+						];
+				
+				//STRINGIFY THE DATA
+				var oldKeyParse = JSON.parse(localStorage.getItem("favJSON"));
+				
+				var error = 0;
+				
+				for(var a in oldKeyParse){
+					if(oldKeyParse[a].id===id){
+						error = error + 1;
+					}
+				}
+				
+				if(error===0){
+					//MERGE THE STRINGS
+					var obj = $.merge(oldKeyParse,Data);
+				 	window.localStorage.setItem("favJSON", JSON.stringify(obj));
+				 	
+				 	var value = localStorage.getItem("favJSON");
+				}
+			 	console.log(value);
+			
+			}
+		});
 	});
 	
-	function favorites(id,cover){
 	
-		alert('IN MDfcker!');
-		
-		if (localStorage.getItem("favJSON") === null) {
-			
-			//FETCH DATA
-			var Data = [
-						{
-						    id: id,
-						    cover: cover 
-						}
-						];
-					alert($.inArray(cover, Data));
-		 	window.localStorage.setItem("favJSON", JSON.stringify(Data));
-		 	
-		 	var value = window.localStorage.getItem("favJSON");
-		 	console.log(value);
-		 	
-		}else{
-			//FETCH DATA
-			var Data = [
-						{
-						    id: id,
-						    cover: cover 
-						},
-						{
-						    id: id,
-						    cover: cover 
-						}
-					];
-			
-			//STRINGIFY THE DATA
-			var oldKeyParse = JSON.parse(localStorage.getItem("favJSON"));
-			
-			var error = 0;
-			
-			for(var a in oldKeyParse){
-				if(oldKeyParse[a].id===id){
-					error = error + 1;
-				}
-			}
-			
-			if(error===0){
-				//MERGE THE STRINGS
-				var obj = $.merge(oldKeyParse,Data);
-			 	window.localStorage.setItem("favJSON", JSON.stringify(obj));
-			 	
-			 	var value = localStorage.getItem("favJSON");
-			}
-		 	console.log(value);
-		
-		}
-	}
 	function deleteSTR(){
 		window.localStorage.removeItem("favJSON");
 	}
