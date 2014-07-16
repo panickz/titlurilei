@@ -5,11 +5,11 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script type="text/javascript" src="js/jquery.mmenu.min.js"></script>
-    <script type="text/javascript" src="js/jquery.mmenu.dragopen.js"></script>
+    <script type="text/javascript" src="js/jquery.sidr.min.js"></script>
     <script type="text/javascript" src="js/modernizr.custom.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script src="js/jquery.swipebox.js"></script>
-    <link type="text/css" rel="stylesheet" href="css/jquery.mmenu.css" />
+    <link type="text/css" rel="stylesheet" href="css/jquery.sidr.dark.css" />
     <link type="text/css" rel="stylesheet" href="css/demo.css" />
     <link rel="stylesheet" href="css/swipebox.css">
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
@@ -34,6 +34,16 @@
 			}
 		});	
 		
+		$('#Mmenu').sidr({
+	      name: 'menu',
+	      side: 'left', // By default
+	      source: '#menu'
+	    });
+	    $('.iconFb').sidr({
+	      name: 'sidr-right',
+	      side: 'right'
+	    });
+		
 		$.ajax({
 			async: false,
 			type: "GET",
@@ -43,40 +53,14 @@
 				$('.data').append(data);
 			}
 		});	
-		
-		$('#menu').mmenu({
-			dragOpen: {
-              open: true
-            },
-			onClick		: {
-				blockUI			: false,
-				close: true
-			}
-		}, {
-			offCanvas	: {
-				pageSelector	: 'div[data-role="page"]:first'
-			}
-		});
-		
+
 		if(typeof(window.localStorage.getItem("isReg")) != "undefined" && window.localStorage.getItem("isReg") !== null) {
 			$('.favorites').append("<img src='img/favIcon.jpg' onClick='' class='iconFb' />");
 		}else{
 			//$('.favorites').append("<img src='img/fbIcon.jpg' onClick='login()' class='iconFb' />");
 			//$('.favorites').append("");
 			}
-		
-		$('#favii').mmenu({
-			dragOpen: {
-                open	: true
-            },
-			onClick		: {
-				blockUI	: false,
-				close	: true
-			}
-		});
-		
-		
-	
+
 		$.ajax({
 			async: false,
 			type: "GET",
@@ -92,11 +76,11 @@
 						url: "http://www.titlurile-zilei.ro/appArchive?cat="+data[x].id,
 						dataType:"JSON",
 						success: function (archive) {
-							
+							console.log(archive);
 							for(var a in archive){
 								
 								$('#cat'+data[x].id).append('<li> \
-									<div class="cover"><a href="http://www.titlurile-zilei.com/assets/upload/mobile/'+archive[a].cover+'" rel="gal'+i+'" class="swipebox" ><img src="http://www.titlurile-zilei.com/assets/upload/mobile/'+archive[a].cover+'" alt=""></a>'+archive[a].name+'</div> \
+									<div class="cover"><a href="http://www.titlurile-zilei.com/assets/upload/mobile/'+archive[a].cover+'" rel="gal'+i+'" class="swipebox" data-id="'+archive[a].hook+'" data-cover="'+archive[a].cover+'"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/'+archive[a].cover+'" alt=""></a>'+archive[a].name+'</div> \
 								  </li>');
 								 
 								  
@@ -114,7 +98,48 @@
         
 			
 	});
+	
+	function favorites(id,cover){
+		if (localStorage.getItem("favJSON") === null) {
+			
+			//FETCH DATA
+			var Data = [
+						{
+						    id: id,
+						    cover: cover 
+						}
+					];
+					alert($.inArray(cover, Data));
+		 	window.localStorage.setItem("favJSON", JSON.stringify(Data));
+		 	
+		 	var value = window.localStorage.getItem("favJSON");
+		 	console.log(value);
+		 	
+		}else{
+			//FETCH DATA
+			var Data = [
+						{
+						    id: id,
+						    cover: cover 
+						}
+					];
+			
+			//STRINGIFY THE DATA
+			var oldKeyParse = JSON.parse(localStorage.getItem("favJSON"));
+			
+			//MERGE THE STRINGS
+			var obj = $.merge(oldKeyParse,Data);
+		 	window.localStorage.setItem("favJSON", JSON.stringify(obj));
+		 	
+		 	var value = localStorage.getItem("favJSON");
 
+		 	console.log(value);
+		
+		}
+	}
+	function deleteSTR(){
+		window.localStorage.removeItem("favJSON");
+	}
  
 
 	
@@ -124,10 +149,11 @@
   <body>
  		<div data-role="page" id='page3' class='ui-page ui-body-c mm-page'>
 			<div class="header">
-				<a href="#menu" data-ajax="false"></a>
+				<a href="#menu" data-ajax="false" id='Mmenu'></a>
 				<img src='images/logo.png' class='logo' /><div style='display:inline-block'class='favorites'></div>
-                <a href='#favorites' id='favii' data-ajax="false" class="ui-link right"><img src='img/favIcon.jpg' class='iconFb' /></a>
+                <a data-ajax="false" class="ui-link right"><img src='img/favIcon.jpg' class='iconFb' /></a>
 			</div>
+			<div onclick="deleteSTR();">REVOKE</div>
             <div class='infoHolder'>
             	<div class='temperature'></div>
                 <div class='data'></div>
@@ -476,7 +502,16 @@ $( document ).ready(function() {
 		useCSS : true, // false will force the use of jQuery for animations
 		useSVG : true, // false to force the use of png for buttons
 		hideBarsOnMobile : false, // false will show the caption and navbar on mobile devices
-		hideBarsDelay : 3000
+		hideBarsDelay : 3000,
+		beforeOpen: function(){  } 
+	});
+	$( '.swipebox' ).click(function() {
+	
+		var id = $(this).attr('data-id');
+		var cover = $(this).attr('data-cover');
+		setTimeout(function(){
+			$('#swipebox-caption > a').attr('onclick','favorites('+id+',"'+cover+'")');
+		},800)
 	});
 });
  </script>				 
