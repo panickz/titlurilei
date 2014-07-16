@@ -110,16 +110,8 @@
 			}
         }
         
-        $( '.swipebox' ).click(function() {
-		   alert('asd');
-			var id = $(this).attr('data-id');
-			var cover = $(this).attr('data-cover');
-			setTimeout(function(){
-				$('#swipebox-slider a').attr('onclick','favorites('+id+',"'+cover+'")');
-			},800)
-		});
-		
-			$( '.favIt' ).click(function() {
+       
+		$( '.favIt' ).click(function() {
 			
 			var id = $(this).attr('data-id');
 			var cover = $(this).attr('data-cover');
