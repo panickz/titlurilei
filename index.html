@@ -170,11 +170,11 @@
 	 $(window).touchwipe({
         wipeLeft: function() {
           // Close
-          $.sidr('close', 'sidr-main');
+          $.sidr('close', 'menu');
         },
         wipeRight: function() {
           // Open
-          $.sidr('open', 'sidr-main');
+          $.sidr('open', 'menu');
         },
         preventDefaultEvents: false
       });
@@ -184,7 +184,7 @@
   <body>
  		<div data-role="page" id='page3' class='ui-page ui-body-c mm-page'>
 			<div class="header">
-				<a href="#menu" data-ajax="false" id='Mmenu'></a>
+				<a data-ajax="false" id='Mmenu'></a>
 				<img src='images/logo.png' class='logo' /><div style='display:inline-block'class='favorites'></div>
                 <a data-ajax="false" class="ui-link right"><img src='img/favIcon.jpg' class='iconFb' /></a>
 			</div>
