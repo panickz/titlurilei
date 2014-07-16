@@ -38,7 +38,7 @@
 						<a id="swipebox-close"></a>\
 						<a id="swipebox-prev"></a>\
 						<a id="swipebox-next"></a>\
-						<a style="color:white;  text-transform:uppercase; text-decoration:none;"><img src="images/star.png" style="width:24px; margin-bottom:-5px; margin-right:5px;">Adauga la favorite</a>
+						<a style="color:white;  text-transform:uppercase; text-decoration:none;"><img src="images/star.png" style="width:24px; margin-bottom:-5px; margin-right:5px;">Adauga la favorite</a> \
 					</div>\
 			</div>';
 
