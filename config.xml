@@ -27,25 +27,18 @@
 	
 	<preference name="KeepRunning" value="false"/>
 	
+	<gap:plugin name="org.apache.cordova.splashscreen" />
 	
-	<icon src="mdpi.png" gap:platform="android" gap:qualifier="mdpi" />
-	<icon src="hdpi.png" gap:platform="android" gap:qualifier="hdpi" />
-	<icon src="xhdpi.png" gap:platform="android" gap:qualifier="xhdpi" />
-	<icon src="xxhdpi.png" gap:platform="android" gap:qualifier="xxhdpi" />
-	
-	<gap:splash src="splash/android/ldpi.png" gap:platform="android" gap:qualifier="port-ldpi" />
-	<gap:splash src="splash/android/mdpi.png" gap:platform="android" gap:qualifier="port-mdpi" />
-	<gap:splash src="splash/android/hdpi.png" gap:platform="android" gap:qualifier="port-hdpi" />
-	<gap:splash src="splash/android/xhdpi.png" gap:platform="android" gap:qualifier="port-xhdpi" />
-	<gap:splash src="splash/android/xxhdpi.png" gap:platform="android" gap:qualifier="port-xxhdpi" /> 
-	
-	<gap:splash src="splash/android/ldpi_landscape.png" gap:platform="android" gap:qualifier="land-ldpi" />
-	<gap:splash src="splash/android/mdpi_landscape.png" gap:platform="android" gap:qualifier="land-mdpi" />
-	<gap:splash src="splash/android/hdpi_landscape.png" gap:platform="android" gap:qualifier="land-hdpi" />
-	<gap:splash src="splash/android/xhdpi_landscape.png" gap:platform="android" gap:qualifier="land-xhdpi" />
+	<gap:splash gap:platform="ios" src="res/screen/ios/1536x2048.png" width="1536" height="2048" />
+	<gap:splash gap:platform="ios" src="res/screen/ios/768x1024.png" width="768" height="1024" />
+	<gap:splash gap:platform="ios" src="res/screen/ios/2048x1536.png" width="2048" height="1536" />
+	<gap:splash gap:platform="ios" src="res/screen/ios/1024x768.png" width="1024" height="768" />
+	<gap:splash gap:platform="ios" src="res/screen/ios/960x640.png" width="960" height="640" />
+	<gap:splash gap:platform="ios" src="res/screen/ios/480x320" width="480" height="320" />
+	<gap:splash gap:platform="ios" src="res/screen/ios/640x960.png" width="640" height="960" />
+	<gap:splash gap:platform="ios" src="res/screen/ios/320x480.png" width="320" height="480" />
 	
 	<gap:plugin name="org.apache.cordova.inappbrowser"  />
-	<gap:plugin name="org.apache.cordova.splashscreen" />
 	<gap:plugin name="org.apache.cordova.vibration" />
 	
 	<engines>
